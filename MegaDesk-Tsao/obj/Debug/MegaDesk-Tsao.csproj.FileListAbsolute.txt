@@ -1,0 +1,17 @@
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\bin\Debug\MegaDesk-Tsao.exe.config
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\bin\Debug\MegaDesk-Tsao.exe
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\bin\Debug\MegaDesk-Tsao.pdb
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\obj\Debug\MegaDesk-Tsao.csprojAssemblyReference.cache
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\obj\Debug\MegaDesk_Tsao.AddQuote.resources
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\obj\Debug\MegaDesk_Tsao.MainMenu.resources
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\obj\Debug\MegaDesk_Tsao.Properties.Resources.resources
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\obj\Debug\MegaDesk-Tsao.csproj.GenerateResource.cache
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\obj\Debug\MegaDesk-Tsao.csproj.CoreCompileInputs.cache
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\obj\Debug\MegaDesk-Tsao.exe
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\obj\Debug\MegaDesk-Tsao.pdb
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\obj\Debug\MegaDesk_Tsao.DisplayQuote.resources
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\obj\Debug\MegaDesk_Tsao.SearchQuotes.resources
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\obj\Debug\MegaDesk_Tsao.ViewAllQuotes.resources
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\bin\Debug\Newtonsoft.Json.dll
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\bin\Debug\Newtonsoft.Json.xml
+C:\Users\cdes5\source\repos\CIT365\MegaDesk-Tsao\MegaDesk-Tsao\obj\Debug\MegaDesk-Tsao.csproj.CopyComplete
