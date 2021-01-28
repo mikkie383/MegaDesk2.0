@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,20 @@ namespace MegaDesk_Tsao
     {
         public DisplayQuote()
         {
-            InitializeComponent();
+            try { 
+                string QuoteFile = @"\quote.txt";
+                InitializeComponent();
+                string jsonFromFile;
+                using (var reader = new StreamReader(QuoteFile))
+                {
+                    jsonFromFile = reader.ReadToEnd();
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+
         }
 
         private void DisplayQuote_FormClosed(object sender, FormClosedEventArgs e)
