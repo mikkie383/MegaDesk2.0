@@ -4,14 +4,20 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace MegaDesk_Tsao
 {
+    
     public enum Shipping
     {
+        [Description("Rush 3 days")]
         Rush3Day,
+        [Description("Rush 5 days")]
         Rush5Day,
+        [Description("Rush 7 days")]
         Rush7Day,
+        [Description("No Rush")]
         NoRush
     }
 
@@ -19,6 +25,7 @@ namespace MegaDesk_Tsao
     {
         private decimal[,] ShippingPrice = GetRushOrder();
 
+        private decimal BasePrice = 200;
 
         public string CustomerName { get; set; }
 
@@ -30,10 +37,16 @@ namespace MegaDesk_Tsao
 
         public Desk Desk { get; set; }
 
-        public decimal GetQuotePrice(SurfaceMaterial material, Shipping shipping)
+        public decimal GetBasePrice()
+        {
+            return BasePrice;
+        }
+
+        public decimal GetQuotePrice(SurfaceMaterial material, int shippingIndex)
         {
             decimal Base = 200;
-            return Base + GetAreaPrice() + GetDrawerPrice() + GetMaterialPrice(material) + GetShipping(shipping);
+            this.QuotePrice = Base + GetAreaPrice() + GetDrawerPrice() + GetMaterialPrice(material) + GetShipping(shippingIndex);
+            return this.QuotePrice;
         }
 
         public decimal GetAreaPrice()
@@ -58,19 +71,19 @@ namespace MegaDesk_Tsao
             return (decimal)material;
         }
 
-        public decimal GetShipping(Shipping shipping)
+        public decimal GetShipping(int shippingIndex)
         {
-            if(Desk.GetArea() < 1000 && (int)shipping == 0)
+            if(Desk.GetArea() < 1000 && shippingIndex != 3)
             {
-                return ShippingPrice[(int)shipping, 0];
+                return ShippingPrice[shippingIndex, 0];
             }
-            else if(Desk.GetArea() < 2000 && (int)shipping == 1)
+            else if(Desk.GetArea() < 2000 && shippingIndex != 3)
             {
-                return ShippingPrice[(int)shipping, 1];
+                return ShippingPrice[shippingIndex, 1];
             }
-            else if(Desk.GetArea() < 2000 && (int)shipping == 2)
+            else if(Desk.GetArea() > 2000 && shippingIndex != 3)
             {
-                return ShippingPrice[(int)shipping, 2];
+                return ShippingPrice[shippingIndex, 2];
             }
             else
             {
@@ -96,7 +109,8 @@ namespace MegaDesk_Tsao
                       rushOrderValue[y, x] = decimal.Parse(readLine[i]);
                       i++;
                  }
-            }            
+            }
+            Console.WriteLine("2D created");
             return rushOrderValue;
         }
     }

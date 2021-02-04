@@ -1,0 +1,62 @@
+[
+  {
+    "CustomerName": "Mike",
+    "QuoteDate": "2021-02-03T20:11:40.9891463-07:00",
+    "QuotePrice": 1071.0,
+    "Shipping": 3,
+    "Desk": {
+      "Width": 42.0,
+      "Depth": 38.0,
+      "NumberofDrawer": 3,
+      "SurfaceMaterial": 125
+    }
+  },
+  {
+    "CustomerName": "Jack",
+    "QuoteDate": "2021-02-03T21:11:45.9891463-07:00",
+    "QuotePrice": 1360.0,
+    "Shipping": 1,
+    "Desk": {
+      "Width": 45.0,
+      "Depth": 38.0,
+      "NumberofDrawer": 2,
+      "SurfaceMaterial": 300
+    }
+  },
+  {
+    "CustomerName": "Sam",
+    "QuoteDate": "2021-02-03T21:46:32.5348339-07:00",
+    "QuotePrice": 631.0,
+    "Shipping": 2,
+    "Desk": {
+      "Width": 48.0,
+      "Depth": 27.0,
+      "NumberofDrawer": 0,
+      "SurfaceMaterial": 100
+    }
+  },
+  {
+    "CustomerName": "Obe",
+    "QuoteDate": "2021-02-03T22:12:31.4763048-07:00",
+    "QuotePrice": 4538.0,
+    "Shipping": 0,
+    "Desk": {
+      "Width": 96.0,
+      "Depth": 48.0,
+      "NumberofDrawer": 7,
+      "SurfaceMaterial": 300
+    }
+  },
+  {
+    "CustomerName": "Timmy",
+    "QuoteDate": "2021-02-04T08:22:42.963193-07:00",
+    "QuotePrice": 750.0,
+    "Shipping": 1,
+    "Desk": {
+      "Width": 40.0,
+      "Depth": 30.0,
+      "NumberofDrawer": 5,
+      "SurfaceMaterial": 50
+    }
+  }
+]

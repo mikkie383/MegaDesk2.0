@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,21 +14,26 @@ namespace MegaDesk_Tsao
 {
     public partial class DisplayQuote : Form
     {
-        public DisplayQuote()
-        {
-            try { 
-                string QuoteFile = @"\quote.txt";
-                InitializeComponent();
-                string jsonFromFile;
-                using (var reader = new StreamReader(QuoteFile))
-                {
-                    jsonFromFile = reader.ReadToEnd();
-                }
-            }
-            catch(Exception ex)
-            {
+        public DisplayQuote(DeskQuote deskQuote)
+        {                
+            InitializeComponent();
+            lbName.Text = "" + deskQuote.CustomerName;
+            DateTime dateTime = DateTime.Now;
+            lbDate.Text = dateTime.ToString("dd MMMM yyyy");
 
-            }
+            lbWidth.Text = "" + deskQuote.Desk.Width;
+            lbDepth.Text = "" + deskQuote.Desk.Depth;
+            lbArea.Text = "" + deskQuote.Desk.GetArea();
+            lbDrawer.Text = "" + deskQuote.Desk.NumberofDrawer;
+            lbMaterial.Text = "" + deskQuote.Desk.SurfaceMaterial;
+            lbDelivery.Text = "" + deskQuote.Shipping;
+
+            lbBasePrice.Text = "" + deskQuote.GetBasePrice();
+            lbAreaPrice.Text = "" + deskQuote.GetAreaPrice();
+            lbDrawerPrice.Text = "" + deskQuote.GetDrawerPrice();
+            lbMaterialPrice.Text = "" + deskQuote.GetMaterialPrice(deskQuote.Desk.SurfaceMaterial);
+            lbShippingPrice.Text = "" + deskQuote.GetShipping((int)deskQuote.Shipping);
+            lbTotalPrice.Text = "" + deskQuote.GetQuotePrice(deskQuote.Desk.SurfaceMaterial, (int)deskQuote.Shipping);
 
         }
 

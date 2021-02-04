@@ -29,27 +29,22 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.comSearch = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(90, 95);
+            this.label1.Location = new System.Drawing.Point(120, 106);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 20);
+            this.label1.Size = new System.Drawing.Size(160, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Surface Material:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(225, 92);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(146, 26);
-            this.textBox1.TabIndex = 1;
             // 
             // label2
             // 
@@ -57,23 +52,47 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Lucida Handwriting", 34F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(84, 9);
+            this.label2.Location = new System.Drawing.Point(112, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(258, 59);
+            this.label2.Size = new System.Drawing.Size(315, 74);
             this.label2.TabIndex = 7;
             this.label2.Text = "Der Desk";
             // 
+            // comSearch
+            // 
+            this.comSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comSearch.FormattingEnabled = true;
+            this.comSearch.Location = new System.Drawing.Point(287, 98);
+            this.comSearch.Name = "comSearch";
+            this.comSearch.Size = new System.Drawing.Size(174, 33);
+            this.comSearch.TabIndex = 8;
+            this.comSearch.SelectedIndexChanged += new System.EventHandler(this.comSearch_SelectedIndexChanged);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(93, 137);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(836, 399);
+            this.dataGridView1.TabIndex = 9;
+            // 
             // SearchQuotes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.comSearch);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SearchQuotes";
             this.Text = "SearchQuotes";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SearchQuotes_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,7 +101,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comSearch;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
