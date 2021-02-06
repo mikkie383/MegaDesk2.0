@@ -17,17 +17,18 @@ namespace MegaDesk_Tsao
         public DisplayQuote(DeskQuote deskQuote)
         {                
             InitializeComponent();
+            //Populate all labels on DisplayQuote
             lbName.Text = "" + deskQuote.CustomerName;
             DateTime dateTime = DateTime.Now;
             lbDate.Text = dateTime.ToString("dd MMMM yyyy");
 
             lbWidth.Text = "" + deskQuote.Desk.Width;
             lbDepth.Text = "" + deskQuote.Desk.Depth;
-            lbArea.Text = "" + deskQuote.Desk.GetArea();
             lbDrawer.Text = "" + deskQuote.Desk.NumberofDrawer;
             lbMaterial.Text = "" + deskQuote.Desk.SurfaceMaterial;
             lbDelivery.Text = "" + deskQuote.Shipping;
 
+            lbArea.Text = "" + deskQuote.Desk.GetArea();
             lbBasePrice.Text = "" + deskQuote.GetBasePrice();
             lbAreaPrice.Text = "" + deskQuote.GetAreaPrice();
             lbDrawerPrice.Text = "" + deskQuote.GetDrawerPrice();
@@ -39,9 +40,6 @@ namespace MegaDesk_Tsao
 
         private void DisplayQuote_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //var mainMenu = new MainMenu();
-            //mainMenu.Show();
-            //Hide();
             var mainMenu = (MainMenu)this.Tag;
             mainMenu.Show();
         }

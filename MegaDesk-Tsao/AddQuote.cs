@@ -14,9 +14,10 @@ namespace MegaDesk_Tsao
 {
     public partial class AddQuote : Form
     {
-        //create a globel desk and deskquote
+        //Instantiate desk (Desk.cs) and deskQuote (DeskQuote.cs) for AddQuote.cs
         public Desk desk;
         public DeskQuote deskQuote;
+        //Declare read-only base price for all desks
         private decimal _basePrice = 200;
 
         public AddQuote()
@@ -26,29 +27,45 @@ namespace MegaDesk_Tsao
             //load date
             DateTime dateTime = DateTime.Now;
             labDate.Text = dateTime.ToString("dd MMMM yyyy");
-            //load background image
-            //this.tansD.Image = Image.FromFile(@"C:\Users\cdes5\source\repos\CIT365\image\TransD.png");
-            //this.tansD.Size = this.tansD.Image.Size;
+
+            ///SURFACE MATERIAL DROP DOWN
+            //Create array of enumerated SurfaceMaterial types from DeskQuote.cs, then cast to list
             List<SurfaceMaterial> materials = Enum.GetValues(typeof(SurfaceMaterial))
                 .Cast<SurfaceMaterial>().ToList();
-
+            //Populate surface material drop down with the list above
             comSurfaceMaterial.DataSource = materials;
-
+            //Set default value of surface material to null
             comSurfaceMaterial.SelectedIndex = -1;
 
-            List<Shipping> shopping = Enum.GetValues(typeof(Shipping))
-                .Cast<Shipping>().ToList();
-            comDeliveryOption.DataSource = shopping;
-            //make combo box empty
+            //DELIVERY OPTION DROP DOWN
+            //Create array of enum description strings
+            List<string> shipDescs = new List<string>();
+            for (int i = 0; i < 4; i++)
+            {
+                string shipDesc = DeskQuote.GetEnumDescription((Shipping)i);
+                shipDescs.Add(shipDesc);
+            }
+            comDeliveryOption.DataSource = shipDescs;
+            //set drop down value to NoRush by default
             comDeliveryOption.SelectedIndex = 3;
-            
 
+            /////////////////////////OLD CODE///////////////////////////////////////////////////////////////////////
+            //List<Shipping> shopping = Enum.GetValues(typeof(Shipping))
+            //    .Cast<Shipping>().ToList();
+            //comDeliveryOption.DataSource = shopping;
+            ////set drop down value to NoRush by default
+            //comDeliveryOption.SelectedIndex = 3;
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            //Replaces minimum accepted values in width depth and drawer fields with empty strings
             widthNum.Text = String.Empty;
             depthNum.Text = String.Empty;
             drawerNum.Text = String.Empty;
 
+            //Set base price automatically, y'know, cuz its the base price
             lbBasePrice.Text = "" + _basePrice;
 
+            //Disables Get Quote button, is enabled once all inputs have been verified
             btnGetQuote.Enabled = false;
         }
 
@@ -67,30 +84,25 @@ namespace MegaDesk_Tsao
         private void btnGetQuote_Click(object sender, EventArgs e)
         {
             
-
+            //Create desk and set properties
             desk = new Desk(widthNum.Value, depthNum.Value, (int)drawerNum.Value, (SurfaceMaterial)comSurfaceMaterial.SelectedItem);
-            // set desk properties
-            // desk.Width = widthNum.Value;
-            
             desk.SurfaceMaterial = (SurfaceMaterial)comSurfaceMaterial.SelectedItem;
-            // create a desk quote
+
+            //Create deskQuote and set properties
             deskQuote = new DeskQuote();
             deskQuote.Shipping = (Shipping)comDeliveryOption.SelectedIndex;
             deskQuote.QuoteDate = DateTime.Now;
-            //set desk quote properties
             deskQuote.CustomerName = txtCustomerName.Text;
-
-            //deskQuote.Shipping = comDeliveryOption.SelectedIndex;
             deskQuote.Desk = desk;
-            // set quote price
             deskQuote.QuotePrice = deskQuote.GetQuotePrice(deskQuote.Desk.SurfaceMaterial, comDeliveryOption.SelectedIndex);
 
-            string QutoeFile = @"quote.json";
+            //assign var to JSON and deskQuotes which will hold the deserialized quotes
+            string QuoteFile = @"quote.json";
             List<DeskQuote> deskQuotes = new List<DeskQuote>();
 
-            if (File.Exists(QutoeFile))
+            if (File.Exists(QuoteFile))
             {
-                using(StreamReader reader = new StreamReader(QutoeFile))
+                using(StreamReader reader = new StreamReader(QuoteFile))
                 {
                     //load existing quotes
                     string quotes = reader.ReadToEnd();
@@ -102,14 +114,14 @@ namespace MegaDesk_Tsao
                     }
                 }
             }
-            //add a new quote
+            //add new quote to the deserialized JSON list
             deskQuotes.Add(deskQuote);
 
-            //save quotes to file
+            ////Convert deskQuotes back to a serialized form and rewrite the JSON file with the new data point
             try
             {
                 var jsonToWrite = JsonConvert.SerializeObject(deskQuotes, Formatting.Indented);
-                using(var writer = new StreamWriter(QutoeFile))
+                using(var writer = new StreamWriter(QuoteFile))
                 {
                     writer.Write(jsonToWrite);
                     writer.Close();
@@ -120,6 +132,7 @@ namespace MegaDesk_Tsao
 
             }
             
+            //Hide AddQuote form and create DisplayQuote form
             this.Hide();
             DisplayQuote displayQuote = new DisplayQuote(deskQuote);
 
@@ -133,6 +146,7 @@ namespace MegaDesk_Tsao
 
         private void countSum_Leave(object sender, EventArgs e)
         {
+            //Set surface area price
             decimal area = widthNum.Value * depthNum.Value;
             decimal areaPrice = 0;
             int limit = 1000;
@@ -143,34 +157,43 @@ namespace MegaDesk_Tsao
             lbSurfaceArea.Text = "" + area;
             lbSurfaceAreaPrice.Text = "" + areaPrice;
 
+            //Set drawer price
             decimal drawerPrice = 50;
             decimal totalDrawerPrice = drawerNum.Value * drawerPrice;
             lbDrawerPrice.Text = "" + totalDrawerPrice;
 
+            //Set material price
             decimal materialPrice = 0;
             switch (comSurfaceMaterial.SelectedIndex)
             {
+                //Pine
                 case 0:
                     materialPrice = 50;
                     break;
+                //Laminate
                 case 1:
                     materialPrice = 100;
                     break;
+                //Veneer
                 case 2:
                     materialPrice = 125;
                     break;
+                //Oak
                 case 3:
                     materialPrice = 200;
                     break;
+                //Rosewood
                 case 4:
                     materialPrice = 300;
                     break;
             }
             lbMaterialPrice.Text = "" + materialPrice;
 
+            //Set shipping price
             decimal shippingPrice;
+            ////////////////////////////////////3 Day Rush/////5 Day Rush/////7 Day Rush//////////////
             decimal[,] shippingPriceArray = { { 60, 70, 80 }, { 40, 50, 60}, { 30, 35, 40} };
-            
+            //Evaluates shipping price based on area and rush selection
             if(area < 1000 && comDeliveryOption.SelectedIndex != 3)
             {
                 shippingPrice = shippingPriceArray[comDeliveryOption.SelectedIndex, 0];
@@ -182,6 +205,7 @@ namespace MegaDesk_Tsao
             {
                 shippingPrice = shippingPriceArray[comDeliveryOption.SelectedIndex, 2];
             }
+            //NoRush Selection
             else
             {
                 shippingPrice = 0;
@@ -189,20 +213,59 @@ namespace MegaDesk_Tsao
             
 
             lbShippingPrice.Text = "" + shippingPrice;
+
+            //Set total cost
             lbTotalCost.Text = "" + (_basePrice + areaPrice + totalDrawerPrice + materialPrice +shippingPrice);
         }
 
+        //Check the AddQuote fields for completion before allowing user to add quote
         private void txtCustomerName_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtCustomerName.Text) || string.IsNullOrEmpty(comSurfaceMaterial.Text) || string.IsNullOrEmpty(comDeliveryOption.Text) || drawerNum.Text.Equals(String.Empty))
+            //Get Quote Button (All fields)
+            if (string.IsNullOrEmpty(txtCustomerName.Text) || string.IsNullOrEmpty(comSurfaceMaterial.Text) || drawerNum.Text.Equals(String.Empty) || widthNum.Text.Equals(String.Empty) || depthNum.Text.Equals(String.Empty))
             {
                 errorProvider1.SetError(btnGetQuote, "Please fill out the form to get quote!");
-            }
-            else
-            {
+            } else {
                 btnGetQuote.Enabled = true;
                 errorProvider1.SetError(btnGetQuote, null);
             }
+            //Name
+            if (string.IsNullOrEmpty(txtCustomerName.Text)) {
+                errorProvider2.SetError(txtCustomerName, "Enter name");
+            } else {
+                errorProvider2.SetError(txtCustomerName, null);
+            }
+            //Surface Material
+            if (string.IsNullOrEmpty(comSurfaceMaterial.Text))
+            {
+                errorProvider3.SetError(comSurfaceMaterial, "Choose a surface material");
+            } else {
+                errorProvider3.SetError(comSurfaceMaterial, null);
+            }
+            //Desk Width
+            if (widthNum.Text.Equals(String.Empty))
+            {
+                errorProvider6.SetError(widthNum, "Choose the width of the desk");
+            } else {
+                errorProvider6.SetError(widthNum, null);
+            }
+            //Desk Depth
+            if (depthNum.Text.Equals(String.Empty))
+            {
+                errorProvider7.SetError(depthNum, "Choose the depth of the desk");
+            } else {
+                errorProvider7.SetError(depthNum, null);
+            }
+            //Drawer Number
+            if (drawerNum.Text.Equals(String.Empty))
+            {
+                errorProvider5.SetError(drawerNum, "Select the number of drawers");
+            } else {
+                errorProvider5.SetError(drawerNum, null);
+            }
+           
+            
+           
         }
     }
 }

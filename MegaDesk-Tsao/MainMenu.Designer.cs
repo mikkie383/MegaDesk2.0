@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.btnAddNewQuote = new System.Windows.Forms.Button();
             this.btnViewQuote = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -42,7 +43,7 @@
             this.btnAddNewQuote.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnAddNewQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewQuote.Location = new System.Drawing.Point(75, 223);
-            this.btnAddNewQuote.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddNewQuote.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddNewQuote.Name = "btnAddNewQuote";
             this.btnAddNewQuote.Size = new System.Drawing.Size(173, 67);
             this.btnAddNewQuote.TabIndex = 0;
@@ -55,7 +56,7 @@
             this.btnViewQuote.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnViewQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewQuote.Location = new System.Drawing.Point(348, 223);
-            this.btnViewQuote.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnViewQuote.Margin = new System.Windows.Forms.Padding(2);
             this.btnViewQuote.Name = "btnViewQuote";
             this.btnViewQuote.Size = new System.Drawing.Size(173, 67);
             this.btnViewQuote.TabIndex = 2;
@@ -67,7 +68,7 @@
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.Location = new System.Drawing.Point(348, 324);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(173, 67);
             this.btnExit.TabIndex = 4;
@@ -80,7 +81,7 @@
             this.btnSearchQuote.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSearchQuote.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchQuote.Location = new System.Drawing.Point(75, 324);
-            this.btnSearchQuote.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSearchQuote.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearchQuote.Name = "btnSearchQuote";
             this.btnSearchQuote.Size = new System.Drawing.Size(173, 67);
             this.btnSearchQuote.TabIndex = 3;
@@ -90,8 +91,9 @@
             // 
             // background
             // 
+            this.background.Image = global::MegaDesk_Tsao.Properties.Resources.MDesk;
             this.background.Location = new System.Drawing.Point(45, -11);
-            this.background.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.background.Margin = new System.Windows.Forms.Padding(2);
             this.background.Name = "background";
             this.background.Size = new System.Drawing.Size(476, 391);
             this.background.TabIndex = 5;
@@ -121,7 +123,8 @@
             this.Controls.Add(this.btnViewQuote);
             this.Controls.Add(this.btnAddNewQuote);
             this.Controls.Add(this.background);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainMenu";
             this.Text = "MegaDesk";
             ((System.ComponentModel.ISupportInitialize)(this.background)).EndInit();

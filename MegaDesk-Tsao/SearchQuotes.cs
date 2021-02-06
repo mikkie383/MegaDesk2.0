@@ -18,9 +18,11 @@ namespace MegaDesk_Tsao
         {
             InitializeComponent();
             loadGrid();
+            //Create new list for surface materials
             List<SurfaceMaterial> materials = Enum.GetValues(typeof(SurfaceMaterial))
                 .Cast<SurfaceMaterial>().ToList();
 
+            //populate drop down with surface materials
             comSearch.DataSource = materials;
 
             //comSearch.SelectedIndex = -1;
@@ -36,15 +38,16 @@ namespace MegaDesk_Tsao
         {
             try
             {
-                
+                //assign var to JSON and var to hold JSON data
                 string QuoteFile = @"quote.json";
                 string jsonFromFile;
+                //read contents from JSON and convert into deserialized list
                 using (var reader = new StreamReader(QuoteFile))
                 {
                     jsonFromFile = reader.ReadToEnd();
                 }
                 List<DeskQuote> showQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(jsonFromFile);
-
+                //Search update function
                 dataGridView1.DataSource = showQuotes
                     .Select(d => new
                     {
@@ -68,6 +71,7 @@ namespace MegaDesk_Tsao
         {
             try
             {
+                //get data from JSON
                 string QuoteFile = @"quote.json";
                 string jsonFromFile;
                 using (var reader = new StreamReader(QuoteFile))
@@ -75,7 +79,7 @@ namespace MegaDesk_Tsao
                     jsonFromFile = reader.ReadToEnd();
                 }
                 List<DeskQuote> showQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(jsonFromFile);
-
+                //populate data grid with JSON data
                 dataGridView1.DataSource = showQuotes
                     .Select(d => new
                     {

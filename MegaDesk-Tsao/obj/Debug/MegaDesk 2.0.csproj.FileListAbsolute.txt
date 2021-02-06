@@ -15,3 +15,20 @@ C:\Users\cdes5\source\repos\MegaDesk 2.0\MegaDesk-Tsao\obj\Debug\MegaDesk 2.0.cs
 C:\Users\cdes5\source\repos\MegaDesk 2.0\MegaDesk-Tsao\obj\Debug\MegaDesk 2.0.csproj.CopyComplete
 C:\Users\cdes5\source\repos\MegaDesk 2.0\MegaDesk-Tsao\obj\Debug\MegaDesk-Tsao.exe
 C:\Users\cdes5\source\repos\MegaDesk 2.0\MegaDesk-Tsao\obj\Debug\MegaDesk-Tsao.pdb
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\bin\Debug\MegaDesk-Tsao.exe.config
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\bin\Debug\MegaDesk-Tsao.exe
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\bin\Debug\MegaDesk-Tsao.pdb
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\obj\Debug\MegaDesk 2.0.csprojAssemblyReference.cache
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\obj\Debug\MegaDesk_Tsao.AddQuote.resources
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\obj\Debug\MegaDesk_Tsao.DisplayQuote.resources
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\obj\Debug\MegaDesk_Tsao.MainMenu.resources
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\obj\Debug\MegaDesk_Tsao.Properties.Resources.resources
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\obj\Debug\MegaDesk_Tsao.SearchQuotes.resources
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\obj\Debug\MegaDesk_Tsao.ViewAllQuotes.resources
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\obj\Debug\MegaDesk 2.0.csproj.GenerateResource.cache
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\obj\Debug\MegaDesk 2.0.csproj.CoreCompileInputs.cache
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\obj\Debug\MegaDesk 2.0.csproj.CopyComplete
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\obj\Debug\MegaDesk-Tsao.exe
+C:\Users\Garrett\source\repos\MegaDesk2.0\MegaDesk-Tsao\obj\Debug\MegaDesk-Tsao.pdb

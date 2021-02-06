@@ -1,17 +1,5 @@
 [
   {
-    "CustomerName": "Mike",
-    "QuoteDate": "2021-02-03T20:11:40.9891463-07:00",
-    "QuotePrice": 1071.0,
-    "Shipping": 3,
-    "Desk": {
-      "Width": 42.0,
-      "Depth": 38.0,
-      "NumberofDrawer": 3,
-      "SurfaceMaterial": 125
-    }
-  },
-  {
     "CustomerName": "Jack",
     "QuoteDate": "2021-02-03T21:11:45.9891463-07:00",
     "QuotePrice": 1360.0,
@@ -57,6 +45,54 @@
       "Depth": 30.0,
       "NumberofDrawer": 5,
       "SurfaceMaterial": 50
+    }
+  },
+  {
+    "CustomerName": "Beau",
+    "QuoteDate": "2021-02-04T12:32:04.8037308-07:00",
+    "QuotePrice": 460.0,
+    "Shipping": 0,
+    "Desk": {
+      "Width": 30.0,
+      "Depth": 15.0,
+      "NumberofDrawer": 2,
+      "SurfaceMaterial": 100
+    }
+  },
+  {
+    "CustomerName": "Pipp",
+    "QuoteDate": "2021-02-05T17:22:45.6785678-07:00",
+    "QuotePrice": 660.0,
+    "Shipping": 0,
+    "Desk": {
+      "Width": 29.0,
+      "Depth": 15.0,
+      "NumberofDrawer": 4,
+      "SurfaceMaterial": 200
+    }
+  },
+  {
+    "CustomerName": "The Great Toledo",
+    "QuoteDate": "2021-02-05T17:23:35.4152107-07:00",
+    "QuotePrice": 500.0,
+    "Shipping": 3,
+    "Desk": {
+      "Width": 30.0,
+      "Depth": 20.0,
+      "NumberofDrawer": 5,
+      "SurfaceMaterial": 50
+    }
+  },
+  {
+    "CustomerName": "Otto",
+    "QuoteDate": "2021-02-05T17:24:27.7561064-07:00",
+    "QuotePrice": 1365.0,
+    "Shipping": 0,
+    "Desk": {
+      "Width": 81.0,
+      "Depth": 20.0,
+      "NumberofDrawer": 7,
+      "SurfaceMaterial": 125
     }
   }
 ]

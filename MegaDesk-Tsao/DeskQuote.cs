@@ -5,10 +5,21 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace MegaDesk_Tsao
 {
-    
+    //for surface material dropdown in AddQuote.cs
+    public enum SurfaceMaterial
+    {
+        Pine = 50,
+        Laminate = 100,
+        Veneer = 125,
+        Oak = 200,
+        Rosewood = 300
+    }
+
+    //for shipping drop down in AddQuote.cs
     public enum Shipping
     {
         [Description("Rush 3 days")]
@@ -23,8 +34,9 @@ namespace MegaDesk_Tsao
 
     public class DeskQuote
     {
+        //create and fill 2d array ShippingPrice with values from GetRushOrder()
         private decimal[,] ShippingPrice = GetRushOrder();
-
+        //this value is always added to the price at the end
         private decimal BasePrice = 200;
 
         public string CustomerName { get; set; }
@@ -36,6 +48,29 @@ namespace MegaDesk_Tsao
         public Shipping Shipping { get; set; }
 
         public Desk Desk { get; set; }
+
+        public static decimal[,] GetRushOrder()
+        {
+            int size = 3;
+            decimal[,] rushOrderValue = new decimal[size, size];
+            string[] readLine;
+
+            string file = @"\rushOrderPrices.txt";
+
+            readLine = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + file);
+
+            int i = 0;
+            for (int y = 0; y < size; y++)
+            {
+                for (int x = 0; x < size; x++)
+                {
+                    rushOrderValue[y, x] = decimal.Parse(readLine[i]);
+                    i++;
+                }
+            }
+            Console.WriteLine("2D created");
+            return rushOrderValue;
+        }
 
         public decimal GetBasePrice()
         {
@@ -90,28 +125,21 @@ namespace MegaDesk_Tsao
                 return 0;
             }
         }
-
-        public static decimal[,] GetRushOrder()
+        
+        //for construction of shipping drop down in AddQuote
+        public static string GetEnumDescription(Enum value)
         {
-            int size = 3;
-            decimal[,] rushOrderValue = new decimal[size, size];
-            string[] readLine;
-            
-            string file = @"\rushOrderPrices.txt";
-            
-            readLine = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + file);
-            
-            int i = 0;
-            for(int y = 0; y < size; y++)
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+
+            DescriptionAttribute[] attributes = fi.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
+
+            if (attributes != null && attributes.Any())
             {
-                 for(int x = 0; x < size; x++)
-                 {
-                      rushOrderValue[y, x] = decimal.Parse(readLine[i]);
-                      i++;
-                 }
+                return attributes.First().Description;
             }
-            Console.WriteLine("2D created");
-            return rushOrderValue;
+
+            return value.ToString();
         }
+        ///////////////////////////////////////////////////////////
     }
 }

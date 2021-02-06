@@ -12,13 +12,12 @@ namespace MegaDesk_Tsao
 {
     public partial class MainMenu : Form
     {
+        //Implement Visual Studio Designer support
         public MainMenu()
         {
             InitializeComponent();
-            this.background.Image = Image.FromFile(@"C:\Users\cdes5\source\repos\CIT365\image\MDesk.png");
-            this.background.Size = this.background.Image.Size;
         }
-
+        //ADD QUOTE
         private void btnAddNewQuote_Click(object sender, EventArgs e)
         {
             //create AddQuote form
@@ -33,7 +32,7 @@ namespace MegaDesk_Tsao
             //hide MainMenu
             this.Hide();
         }
-
+        //SEARCH QUOTE
         private void btnSearchQuote_Click(object sender, EventArgs e)
         {
             //create SearchQuote form
@@ -48,7 +47,7 @@ namespace MegaDesk_Tsao
             //hide MainMenu
             this.Hide();
         }
-
+        //VIEW QUOTE
         private void btnViewQuote_Click(object sender, EventArgs e)
         {
             
@@ -65,7 +64,7 @@ namespace MegaDesk_Tsao
             this.Hide();
 
         }
-
+        //EXIT
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();

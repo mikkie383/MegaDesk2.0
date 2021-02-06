@@ -57,5 +57,48 @@ namespace MegaDesk_Tsao
             var mainMenu = (MainMenu)this.Tag;
             mainMenu.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //deskQuotes.RemoveAt(dataGridView1.CurrentRow.Index);
+            //loadGrid();
+            ////////////////////////////////////////////////
+            //assign var to JSON and deskQuotes which will hold the deserialized quotes
+            string QuoteFile = @"quote.json";
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
+
+            if (File.Exists(QuoteFile))
+            {
+                using (StreamReader reader = new StreamReader(QuoteFile))
+                {
+                    //load existing quotes
+                    string quotes = reader.ReadToEnd();
+
+                    if (quotes.Length > 0)
+                    {
+                        //deserialize quotes
+                        deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+                    }
+                }
+            }
+            //removes quote from the deserialized JSON list
+            deskQuotes.RemoveAt(dataGridView1.CurrentRow.Index);
+
+            ////Convert deskQuotes back to a serialized form and rewrite the JSON file without the deleted data point
+            try
+            {
+                var jsonToWrite = JsonConvert.SerializeObject(deskQuotes, Formatting.Indented);
+                using (var writer = new StreamWriter(QuoteFile))
+                {
+                    writer.Write(jsonToWrite);
+                    writer.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            loadGrid();
+        }
     }
 }
